@@ -11,9 +11,9 @@ class Charts::Chart
   end
 
   def validate_arguments(data, options)
-    raise ArgumentError.new('Data missing') if data.empty?
-    raise ArgumentError.new('Data not an array') unless data.is_a? Array
-    raise ArgumentError.new('Options missing') unless options.is_a? Hash
+    raise ArgumentError, 'Data missing' if data.empty?
+    raise ArgumentError, 'Data not an array' unless data.is_a? Array
+    raise ArgumentError, 'Options missing' unless options.is_a? Hash
     if options[:outer_margin] && !options[:outer_margin].is_a?(Numeric)
       raise ArgumentError, 'outer_margin not a number'
     end
@@ -24,10 +24,9 @@ class Charts::Chart
 
   def array?(options, keys)
     keys.map do |key|
-      if options[key]
-        unless options[key].is_a?(Array) 
-          raise ArgumentError, "#{key} not an array"
-        end
+      next unless options[key]
+      unless options[key].is_a?(Array)
+        raise ArgumentError, "#{key} not an array"
       end
     end
   end
@@ -104,7 +103,7 @@ class Charts::Chart
     renderer.text options[:title], x, y, text_anchor: 'middle', class: 'title'
   end
 
-  def initialize_instance_variables 
+  def initialize_instance_variables
   end
 
   def create_options_methods
