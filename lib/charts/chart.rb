@@ -24,8 +24,10 @@ class Charts::Chart
 
   def array?(options, keys)
     keys.map do |key|
-      if options[key] && !options[key].is_a?(Array)
-        raise ArgumentError, "#{key} not an array"
+      if options[key]
+        unless options[key].is_a?(Array) 
+          raise ArgumentError, "#{key} not an array"
+        end
       end
     end
   end
