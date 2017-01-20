@@ -259,23 +259,23 @@ RSpec.describe Charts::CountChart do
 
   describe '#height and #width with presence of labels' do
     context 'three items with three labels' do
-      let(:data) { [3] }
+      let(:data) { [3, 3, 3] }
       let(:labels) { ['Cars', 'Buses', 'Bikes'] }
-      let(:item_height) { 20 }
-      include_examples 'has a width and height of', 40, 120
-    end
-    context 'five items with five labels' do
-      let(:data) { [5] }
-      let(:labels) { ['Cars', 'Buses', 'Bikes', 'Planes', 'Ferries'] }
       let(:item_height) { 20 }
       include_examples 'has a width and height of', 40, 180
     end
+    context 'five items with five labels' do
+      let(:data) { [5, 5, 5, 5, 5] }
+      let(:labels) { ['Cars', 'Buses', 'Bikes', 'Planes', 'Ferries'] }
+      let(:item_height) { 20 }
+      include_examples 'has a width and height of', 40, 380
+    end
     context 'five items in three columns with five labels' do
-      let(:data) { [5] }
+      let(:data) { [5, 5, 5, 5, 5] }
       let(:columns) { 3 }
       let(:labels) { ['Cars', 'Buses', 'Bikes', 'Planes', 'Ferries'] }
       let(:item_height) { 20 }
-      include_examples 'has a width and height of', 60, 160
+      include_examples 'has a width and height of', 60, 300
     end
   end
 
