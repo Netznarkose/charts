@@ -5,8 +5,8 @@ AllCops:
     - '**/*.gemspec'
     - '**/*.rake'
     - '**/Gemfile'
-    - '**/Rakefile'
     - '**/Guardfile'
+    - '**/Rakefile'
     - '**/Vagrantfile'
 
   Exclude:
