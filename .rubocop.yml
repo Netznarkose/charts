@@ -1,4 +1,16 @@
 # rubocop settings:
+AllCops:
+  # Include common Ruby source files.
+  Include:
+    - '**/*.gemspec'
+    - '**/*.rake'
+    - '**/Gemfile'
+    - '**/Rakefile'
+    - '**/Guardfile'
+    - '**/Vagrantfile'
+
+  Exclude:
+    - 'spec/**/*'
 
 Metrics/LineLength:
   Max: 120
