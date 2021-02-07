@@ -41,17 +41,19 @@ RSpec.describe Charts::CountChart do
   describe '#default_options' do
     let(:chart) { Charts::CountChart.new [1] }
     it 'has a default item-colors' do
-      expect(chart.colors).to eq([
-                                   '#e41a1d',
-                                   '#377eb9',
-                                   '#4daf4b',
-                                   '#984ea4',
-                                   '#ff7f01',
-                                   '#ffff34',
-                                   '#a65629',
-                                   '#f781c0',
-                                   '#888888'
-                                 ])
+      expect(chart.colors).to eq(
+        [
+          '#e41a1d',
+          '#377eb9',
+          '#4daf4b',
+          '#984ea4',
+          '#ff7f01',
+          '#ffff34',
+          '#a65629',
+          '#f781c0',
+          '#888888'
+        ]
+      )
     end
     it 'has a default background-colors' do
       expect(chart.background_color).to eq('white')
@@ -175,24 +177,30 @@ RSpec.describe Charts::CountChart do
   describe '#prepare_data' do
     it 'creates the prepared_data for simple keys' do
       chart = Charts::CountChart.new([3, 2], colors: ['x', 'o'], columns: 2)
-      expect(chart.prepared_data).to eq([
-                                          ['x', 'x'],
-                                          ['x', 'o'],
-                                          ['o']
-                                        ])
+      expect(chart.prepared_data).to eq(
+        [
+          ['x', 'x'],
+          ['x', 'o'],
+          ['o']
+        ]
+      )
     end
     it 'creates the prepared_data for complex keys' do
       chart = Charts::CountChart.new([2, 2], colors: ['#FF0000', '#00FF00'], columns: 2)
-      expect(chart.prepared_data).to eq([
-                                          ['#FF0000', '#FF0000'],
-                                          ['#00FF00', '#00FF00']
-                                        ])
+      expect(chart.prepared_data).to eq(
+        [
+          ['#FF0000', '#FF0000'],
+          ['#00FF00', '#00FF00']
+        ]
+      )
     end
     it 'default colors get assigned when no colors are specified' do
       chart = Charts::CountChart.new([1, 1, 1])
-      expect(chart.prepared_data).to eq([
-                                          ['#e41a1d', '#377eb9', '#4daf4b']
-                                        ])
+      expect(chart.prepared_data).to eq(
+        [
+          ['#e41a1d', '#377eb9', '#4daf4b']
+        ]
+      )
     end
   end
 
@@ -251,23 +259,23 @@ RSpec.describe Charts::CountChart do
 
   describe '#height and #width with presence of labels' do
     context 'three items with three labels' do
-      let(:data) { [3] }
+      let(:data) { [3, 3, 3] }
       let(:labels) { ['Cars', 'Buses', 'Bikes'] }
-      let(:item_height) { 20 }
-      include_examples 'has a width and height of', 40, 120
-    end
-    context 'five items with five labels' do
-      let(:data) { [5] }
-      let(:labels) { ['Cars', 'Buses', 'Bikes', 'Planes', 'Ferries'] }
       let(:item_height) { 20 }
       include_examples 'has a width and height of', 40, 180
     end
+    context 'five items with five labels' do
+      let(:data) { [5, 5, 5, 5, 5] }
+      let(:labels) { ['Cars', 'Buses', 'Bikes', 'Planes', 'Ferries'] }
+      let(:item_height) { 20 }
+      include_examples 'has a width and height of', 40, 380
+    end
     context 'five items in three columns with five labels' do
-      let(:data) { [5] }
+      let(:data) { [5, 5, 5, 5, 5] }
       let(:columns) { 3 }
       let(:labels) { ['Cars', 'Buses', 'Bikes', 'Planes', 'Ferries'] }
       let(:item_height) { 20 }
-      include_examples 'has a width and height of', 60, 160
+      include_examples 'has a width and height of', 60, 300
     end
   end
 

@@ -255,7 +255,7 @@ RSpec.describe Charts::BarChart do
       labels_texts = svg.css('text.label').map{ |t| t.text.tr("\n", '') }
       expect(labels_texts).to eq(labels)
     end
-    describe 'too few labels' do
+    describe 'count of label and data does not match' do
       let(:labels) { ['Alpha', 'Beta'] }
       it 'raises an error' do
         expect{ chart.render }.to raise_error(ArgumentError)
